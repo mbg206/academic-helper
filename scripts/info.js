@@ -175,6 +175,8 @@ const buildSchedule = () => {
             createElement("span", {text: course.course}),
             createElement("span", {text: formatCourseTime(course)})
         ]}));
+
+        prevTime = end;
     }
 
 
