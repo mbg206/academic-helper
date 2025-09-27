@@ -1,0 +1,26 @@
+body.dark {
+    background-color: #272727;
+    color: #FFF;
+
+    --config-button-color: #585858;
+    --task-complete-color: rgba(127, 127, 127, 0.35);
+    --shadow-color: transparent;
+
+    --darker-color: #DDD;
+    --dark-color: #BBB;
+    --light-color: #888;
+    --lighter-color: #444;
+    --checkbox-color: #66D;
+    --overdue-color: #F77;
+
+    --color0: #990000;
+    --color1: #B45F06;
+    --color2: #BF9000;
+    --color3: #AABA5D;
+    --color4: #38761D;
+    --color5: #134F5C;
+    --color6: #0B5394;
+    --color7: #674EA7;
+    --color8: #741B47;
+    --color9: #999999;
+}

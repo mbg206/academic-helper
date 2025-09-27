@@ -1,0 +1,549 @@
+@font-face {
+    font-family: "Nunito";
+    src: url("Nunito-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: "Material Icons";
+    src: url("MaterialIcons-Regular.ttf");
+}
+
+/* base styles */
+
+* {
+    font-family: "Nunito", sans-serif;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+body {
+    margin: 0;
+    user-select: none;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+button, input, select {
+    border: none;
+    color: inherit;
+    background-color: inherit;
+    font-size: inherit;
+}
+input:focus {
+    outline: none;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+    text-align: center;
+}
+
+    /* master styles */
+
+.color0 {background-color: var(--color0) !important;}
+.color1 {background-color: var(--color1) !important;}
+.color2 {background-color: var(--color2) !important;}
+.color3 {background-color: var(--color3) !important;}
+.color4 {background-color: var(--color4) !important;}
+.color5 {background-color: var(--color5) !important;}
+.color6 {background-color: var(--color6) !important;}
+.color7 {background-color: var(--color7) !important;}
+.color8 {background-color: var(--color8) !important;}
+.color9 {background-color: var(--color9) !important;}
+
+.pebble {
+    border: 1px solid #444;
+    background-color: var(--lighter-color);
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    font-size: 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Material Icons";
+}
+
+.tile {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    border-radius: 8px;
+    width: calc(100% - 24px);
+    margin: 0 auto 12px auto;
+
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: #AAA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Material Icons";
+}
+.checkbox.active {
+    background-color: var(--checkbox-color);
+}
+.checkbox.active::before {
+    content: "check";
+}
+
+#screen-overlay, .config-screen {
+    transition: opacity 0.25s ease-in-out;
+}
+#screen-overlay.hidden, .config-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+#screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.config-screen {
+    padding: 8px 16px;
+    background-color: var(--lighter-color);
+    border-radius: 8px;
+    width: min(384px, calc(100vw - 64px));
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    text-align: center;
+    position: absolute;
+}
+.config-screen .pebble, .config-screen .save-button {
+    background-color: var(--config-button-color);
+    border: 1px solid;
+}
+.save-button {
+    border-radius: 4px;
+    padding: 8px 24px;
+    margin-top: 16px;
+}
+    /* home screen */
+
+/* header */
+header {
+    display: flex;
+    justify-content: space-between;
+}
+header span {
+    font-size: 28px;
+    height: 0px;
+    position: relative;
+    bottom: 4px;
+}
+
+/* calendar */
+#calendar-input {
+    position: absolute;
+    top: 64px;
+    right: 32px;
+    visibility: hidden;
+}
+
+/* date label */
+#date-container {
+    border: 1px solid;
+    font-size: min(4.5vw, 24px);
+    text-align: center;
+    margin: 24px 0;
+}
+
+#date {
+    font-weight: bold;
+}
+
+/* time/schedule */
+#schedule-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.schedule-label, #current-time {
+    color: var(--dark-color);
+}
+.schedule-label {
+    display: inline-block;
+    height: 32px;
+    width: 96px;
+}
+.schedule-label::before {
+    display: inline-block;
+    height: 18px;
+    border-left: 1px solid;
+    position: relative;
+    left: 18px;
+    top: 24px;
+    content: '';
+}
+
+#schedule {
+    height: 52px;
+    width: 2304px;
+    border: 1px solid var(--dark-color);
+    position: relative;
+    left: 18px;
+    display: flex;
+    align-items: center;
+}
+#schedule.break {
+    background-color: rgba(127, 127, 127, 0.5);
+}
+#schedule.break .schedule-course {
+    text-decoration: line-through 2px;
+}
+.schedule-course {
+    height: 28px;
+    font-size: 12px;
+    border-radius: 4px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#current-time-container{
+    position: relative;
+    bottom: 8px;
+    left: 123px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 0px;
+    visibility: hidden;
+}
+#current-indicator {
+    background-color: #F44;
+    height: 22px;
+    width: 1px;
+    filter: drop-shadow(1px 1px 1px var(--shadow-color));
+}
+
+/* event and task section */
+h1, h2 {
+    border-bottom: 1px solid;
+    margin-bottom: 16px;
+}
+h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 22px;
+    padding-bottom: 4px;
+}
+
+.task-container {
+    min-height: 56px;
+}
+.break-text {
+    font-weight: bold;
+}
+
+.task-container:empty::after {
+    display: block;
+    text-align: center;
+}
+#events:empty::after {
+    content: "No events";
+}
+#tasks:empty::after {
+    content: "Nothing here! Woohoo!";
+}
+#tasks-unimportant:empty::after {
+    content: "Nothing here";
+}
+
+/* event and task tiles */
+.tile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.tile-title {
+    font-size: 16px;
+}
+.event, .task {
+    padding: 4px 14px;
+    min-height: 48px;
+}
+.overdue {
+    color: var(--overdue-color);
+}
+.task.completed {
+    filter: grayscale(50%);
+}
+.task.completed .tile-title {
+    text-decoration: line-through;
+}
+.event {
+    display: block;
+}
+.tile .tile {
+    grid-column: 1 / 3;
+    margin: 8px auto;
+    border: 1px solid #222;
+    background-color: inherit;
+}
+
+.clear-task {
+    background-color: var(--task-complete-color);
+    border-color: var(--darker-color);
+    margin: auto 0;
+}
+
+/* bottom inputs */
+#show-completed-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: end;
+    /* justify-content: space-between; */
+    justify-content: start;
+    width: calc(100% - 64px);
+    padding: 16px 0;
+}
+#show-completed {
+    margin-left: 16px;
+}
+
+#create-menu-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+}
+#create-menu-toggle {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: var(--lighter-color);
+    filter: drop-shadow(2px 2px 1px var(--shadow-color));
+    float: right;
+}
+#create-menu {
+    background-color: var(--lighter-color);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 64px;
+    transition: height 0.1s ease-out;
+}
+#create-menu.hidden {
+    height: 0;
+}
+#create-menu button {
+    display: block;
+    width: 64px;
+    height: 32px;
+}
+
+    /* infocards */
+
+h3 {
+    margin: auto 0;
+}
+
+/* settings */
+.category {
+    font-size: 16px;
+    text-align: left;
+    padding: 2px 8px;
+}
+
+#course-infocard {
+    text-align: left !important;
+    user-select: text;
+}
+
+/* course infocard */
+.course-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0 8px;
+}
+
+#course-time-container {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr;
+    text-align: center;
+}
+
+#settings .config-area {
+    padding: 8px 32px 16px 32px;
+}
+
+#settings .config-header {
+    padding-bottom: 4px;
+    border-bottom: 1px solid;
+}
+#settings-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+#settings-footer .save-button {
+    margin: 0;
+}
+
+/* schedule infocard */
+.schedule-tile, .term-tile {
+    text-align: left;
+    padding: 8px 12px;
+}
+.schedule-tile span:nth-child(1),
+.course-tile span:nth-child(1) {
+    font-weight: bold;
+}
+
+#schedule-infocard h3 {
+    font-size: 18px;
+}
+#schedule-infocard .config-header {
+    margin: 0;
+}
+#schedule-infocard .tile, #courses-list .tile {
+    margin-top: 16px;
+}
+
+#schedule-list:empty::before, #courses-list:empty::before {
+    display: inline-block;
+    padding: 32px 0;
+}
+#schedule-list:empty::before {
+    content: "No classes today.";
+}
+#term-progress.hidden {
+    display: none;
+}
+
+/* courses menu */
+#courses .config-header {
+    margin: 0 !important;
+}
+#courses-list:empty::before {
+    content: "No items.";
+}
+
+.term-tile {
+    background-color: var(--light-color);
+}
+.course-tile {
+    padding: 4px 8px;
+    text-align: left;
+    gap: 0;
+}
+.course-tile span:nth-child(2n) {
+    text-align: right;
+}
+
+    /* config screens */
+
+.config-header {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    margin: 8px 0;
+}
+.config-header h3 {
+    grid-column-start: 2;
+}
+
+.config-area {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 12px;
+}
+.config-area label {
+    text-align: right;
+}
+.config-area input {
+    font-size: 12px;
+}
+.small-label {
+    font-size: 14px;
+    color: var(--dark-color);
+}
+
+input, select {
+    border-bottom: 1px solid;
+}
+
+.course-day-toggle.active {
+    outline: 1px solid var(--darker-color);
+}
+
+#color-menu, #color-menu button {
+    border: 1px solid var(--dark-color);
+}
+#color-menu {
+    position: absolute;
+    background-color: var(--light-color);
+    display: grid;
+    grid-template-columns: repeat(5, 20px);
+    grid-template-rows: repeat(2, 20px);
+    gap: 4px;
+    padding: 4px;
+    z-index: 999;
+}
+#color-menu.hidden {
+    display: none;
+}
+
+.color-picker {
+    width: 64px;
+    margin: 0 auto;
+    border: 2px solid var(--darker-color);
+}
+
+.datetime {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#subtasks-container {
+    grid-column: 1 / 3;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 8px;
+}
+#subtasks-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.subtask {
+    border: 1px solid;
+    border-radius: 8px;
+    margin-top: 8px;
+
+    display: grid;
+    grid-template-columns: max-content 1fr min-content;
+    padding: 6px;
+    gap: 8px;
+    overflow-x: auto;
+    font-size: 12px;
+}
+.subtask .small-label {
+    font-size: inherit;
+}
+.subtask-trash-container {
+    height: 0px;
+}
+.subtask *:nth-child(2n+5) {
+    grid-column: 2 / 4;
+}

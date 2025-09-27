@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Helper</title>
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/styles-light.css ">
+    <link rel="stylesheet" href="styles/styles-dark.css">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon/icon_192.png">
+</head>
+<body class="light">
+    <header>
+        <button class="pebble" id="show-settings">settings</button>
+        <span>Time Tracker</span>
+        <button class="pebble" id="show-calendar">today</button>
+    </header>
+
+    <input type="date" id="calendar-input">
+
+    <div id="date-container">
+        <span id="date-today">Today is</span>
+        <span id="date"></span>
+    </div>
+
+    <div id="schedule-container">
+        <div><!--
+         --><span class="schedule-label">12am</span><!--
+         --><span class="schedule-label">1am</span><!--
+         --><span class="schedule-label">2am</span><!--
+         --><span class="schedule-label">3am</span><!--
+         --><span class="schedule-label">4am</span><!--
+         --><span class="schedule-label">5am</span><!--
+         --><span class="schedule-label">6am</span><!--
+         --><span class="schedule-label">7am</span><!--
+         --><span class="schedule-label">8am</span><!--
+         --><span class="schedule-label">9am</span><!--
+         --><span class="schedule-label">10am</span><!--
+         --><span class="schedule-label">11am</span><!--
+         --><span class="schedule-label">12pm</span><!--
+         --><span class="schedule-label">1pm</span><!--
+         --><span class="schedule-label">2pm</span><!--
+         --><span class="schedule-label">3pm</span><!--
+         --><span class="schedule-label">4pm</span><!--
+         --><span class="schedule-label">5pm</span><!--
+         --><span class="schedule-label">6pm</span><!--
+         --><span class="schedule-label">7pm</span><!--
+         --><span class="schedule-label">8pm</span><!--
+         --><span class="schedule-label">9pm</span><!--
+         --><span class="schedule-label">10pm</span><!--
+         --><span class="schedule-label">11pm</span>
+        </div>
+
+        <div id="schedule">
+            <span class="schedule-space" style="width: 32px;"></span>
+            <span class="schedule-course" style="width: 32px;">CS</span>
+        </div>
+
+        <div id="current-time-container">
+            <span id="current-indicator"></span>
+            <span id="current-time">7:32</span>
+        </div>
+    </div>
+
+    <h1>Events</h1>
+    <div class="task-container" id="events"></div>
+
+    <h1>Tasks</h1>
+    <div class="task-container" id="tasks"></div>
+
+    <h2>Unimportant Tasks</h2>
+    <div class="task-container" id="tasks-unimportant"></div>
+
+    <div id="show-completed-container">
+        <label for="show-completed">Show Completed Tasks?</label>
+        <button class="checkbox" id="show-completed"></button>
+    </div>
+
+    <div id="create-menu-container">
+        <div id="create-menu" class="hidden">
+            <button id="create-event">Event</button>
+            <button id="create-task">Task</button>
+        </div>
+        <button id="create-menu-toggle">+</button>
+    </div>
+
+    <!-- Config/Info Screens -->
+
+    <div id="screen-overlay" class="hidden">
+
+        <!-- Settings Menu -->
+
+        <div class="config-screen hidden" id="settings">
+            <div class="config-area">
+                <label for="theme">Theme</label>
+                <select id="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="system">Match system</option>
+                </select>
+            </div>
+
+            <div class="config-header">
+                <h3>Categories</h3>
+                <button class="pebble" id="create-category">add</button>
+            </div>
+
+            <div id="categories"></div>
+
+            <div id="settings-footer">
+                <button class="pebble" id="upload-data">upload</button>
+                <button class="save-button" id="close-settings">OK</button>
+                <button class="pebble" id="download-data">download</button>
+            </div>
+        </div>
+
+        <!-- Course Info Card -->
+
+        <div class="config-screen hidden" id="course-infocard"></div>
+
+        <!-- Schedule Info Card -->
+
+        <div class="config-screen hidden" id="schedule-infocard">
+            <div class="config-header">
+                <button class="pebble" id="show-term-progress">info</button>
+                <h3 id="schedule-infocard-header"></h3>
+                <button class="pebble" id="show-courses">edit_calendar</button>
+            </div>
+
+            <div id="term-progress" class="hidden"></div>
+            <div id="schedule-list"></div>
+        </div>
+
+        <!-- Courses Menu -->
+
+        <div class="config-screen hidden" id="courses">
+            <div class="config-header">
+                <h3>All Courses</h3>
+                <button class="pebble" id="create-courses">add</button>
+            </div>
+
+            <div id="courses-list">
+                <div class="tile term"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="color-menu" class="hidden"></div>
+
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/input.js"></script>
+    <script src="scripts/info.js"></script>
+    <script src="scripts/screens.js"></script>
+    <script src="scripts/config.js"></script>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

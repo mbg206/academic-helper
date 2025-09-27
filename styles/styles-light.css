@@ -1,0 +1,26 @@
+body.light {
+    background-color: #FFF;
+    color: #000;
+
+    --config-button-color: #E8E8E8;
+    --task-complete-color: rgba(255, 255, 255, 0.35);
+    --shadow-color: #444;
+
+    --darker-color: #444;
+    --dark-color: #555;
+    --light-color: #BBB;
+    --lighter-color: #EEE;
+    --checkbox-color: #99F;
+    --overdue-color: #900;
+
+    --color0: #E06666;
+    --color1: #F6B26B;
+    --color2: #FFD966;
+    --color3: #E9FF7F;
+    --color4: #93C47D;
+    --color5: #76A5AF;
+    --color6: #6D9EEB;
+    --color7: #B4A7D6;
+    --color8: #C27BA0;
+    --color9: #EFEFEF;
+}

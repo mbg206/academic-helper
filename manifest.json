@@ -1,0 +1,19 @@
+{
+    "name": "Academic Helper",
+    "short_name": "Helper",
+    "icons": [
+        {
+            "src": "./icon/icon_192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./icon/icon_512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "orientation": "portrait"
+}
