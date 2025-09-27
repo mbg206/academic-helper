@@ -28,4 +28,4 @@ showCategories();
 
 setInterval(setCurrentTime, 1000);
 
-navigator.serviceWorker.register("../worker.js").then(console.log);
+navigator.serviceWorker.register("./worker.js").then(console.log);
