@@ -21,3 +21,5 @@ Designed for mobile devices, not the desktop.
 - Add task completion animation/effect
 
 - Replace `localStorage` with `IndexedDB`?
+
+- Improve sorting

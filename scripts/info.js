@@ -141,9 +141,8 @@ const buildSchedule = () => {
     const terms = getCurrentTerms();
     const termNames = terms.map(term => term.name);
 
-    const courses = DATA.courses.filter(course => termNames.includes(course.term));
-    const todayCourses = courses.filter(course => course.days.includes(selectedDate.getDay()));
-    courses.sort((a, b) => a.startTime - b.startTime);
+    const todayCourses = DATA.courses.filter(course => termNames.includes(course.term))
+                                     .filter(course => course.days.includes(selectedDate.getDay()));
     todayCourses.sort((a, b) => daysToMs(a.days[0], a.startTime) - daysToMs(b.days[0], b.startTime));
 
     schedule.innerHTML = "";
@@ -218,8 +217,9 @@ const buildSchedule = () => {
         InputElement.CourseConfig.TERM.appendChild(option);
     }
 
-    for (let i = 0; i < courses.length; i++) {
-        const course = courses[i];
+    for (let i = 0; i < DATA.courses.length; i++) {
+        const course = DATA.courses[i];
+        if (!termNames.includes(course.term)) continue;
 
         const element = createElement("div", {class: `tile course-tile ${course.color}`, children: [
             createElement("span", {text: course.course}),
@@ -322,13 +322,16 @@ const updateEvents = () => {
     isBreak = false;
 
     const time = selectedDate.getTime();
-    const events = DATA.events.filter((event) =>
-        time >= parseDatetime(event.start) &&
-        time < (parseDatetime(event.end !== null ? event.end : event.start) + DAY_MS)
-    );
 
-    for (let i = 0; i < events.length; i++) {
-        const event = events[i];
+    for (let i = 0; i < DATA.events.length; i++) {
+        const event = DATA.events[i];
+
+        if (!(
+            time >= parseDatetime(event.start) &&
+            time < (parseDatetime(event.end !== null ? event.end : event.start) + DAY_MS))
+        ) continue;
+
+
         const category = DATA.categories.find(category => category.name === event.category);
 
         const element = createElement("div", {class: `tile event ${category.color}`});
