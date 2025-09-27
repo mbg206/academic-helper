@@ -2,6 +2,8 @@
 
 A to-do list and time-tracking [progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app) for college students. Created primarily for personal use, but any outside feedback or bug reports are appreciated.
 
+Designed for mobile devices, not the desktop.
+
 ## Features
 
 - Advanced task manager (to-do list)
@@ -17,3 +19,5 @@ A to-do list and time-tracking [progressive web app](https://en.wikipedia.org/wi
 - Improve UI
 
 - Add task completion animation/effect
+
+- Replace `localStorage` with `IndexedDB`?
