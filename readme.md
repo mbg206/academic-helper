@@ -1,3 +1,6 @@
+> **8/31/2026** \
+> This repo is no longer actively maintained, and will be archived. View the app here: [https://mbg206.github.io/academic-helper/](https://mbg206.github.io/academic-helper/)
+
 # Acadmic Helper
 
 A to-do list and time-tracking [progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app) for college students. Created primarily for personal use, but any outside feedback or bug reports are appreciated.
